@@ -1,19 +1,8 @@
 package org.cheercode.renders;
 
 import org.cheercode.cards.Card;
-import org.cheercode.cards.CardRanks;
-import org.cheercode.cards.CardSuits;
-import org.cheercode.factories.CardRepresentationFactory;
 
-import java.util.Map;
-
-public class ConsoleRender implements Render {
-    private final Map<String, String> cardRepresentations;
-
-    public ConsoleRender() {
-        this.cardRepresentations = CardRepresentationFactory.createCardRepresentations();
-    }
-
+public abstract class AbstractConsoleRender implements Render {
     @Override
     public void showHelloMessage() {
         System.out.println("""
@@ -31,25 +20,22 @@ public class ConsoleRender implements Render {
 
     @Override
     public void render(Card card) {
-        String key = getKey(card);
-        String representation = cardRepresentations.get(key);
+        String representation = getRepresentation(card);
         System.out.println("Выпала карта:");
         System.out.println(representation);
     }
 
+    protected abstract String getRepresentation(Card card);
+
     @Override
     public void showVictoryMessage() {
-        System.out.println("YOU WIN!");
+        System.out.println("ВЫ УГАДАЛИ!");
+        System.out.println();
     }
 
     @Override
     public void showLoseMessage() {
-        System.out.println("You lose..");
-    }
-
-    private String getKey(Card card) {
-        CardSuits suit = card.getSuit();
-        CardRanks rank = card.getRank();
-        return suit + "_" + rank;
+        System.out.println("Вы не угадали..");
+        System.out.println();
     }
 }
