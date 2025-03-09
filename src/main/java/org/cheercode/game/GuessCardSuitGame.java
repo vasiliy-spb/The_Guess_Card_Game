@@ -5,6 +5,7 @@ import org.cheercode.cards.CardSuits;
 import org.cheercode.dialogs.CharacterDialog;
 import org.cheercode.dialogs.Dialog;
 import org.cheercode.factories.DeckFactory;
+import org.cheercode.result_analyzers.CardSuitsGameResultAnalyzer;
 import org.cheercode.renders.Render;
 
 import java.util.Collections;

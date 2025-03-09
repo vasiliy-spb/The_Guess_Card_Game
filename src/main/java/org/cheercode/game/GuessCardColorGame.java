@@ -5,6 +5,7 @@ import org.cheercode.cards.CardColors;
 import org.cheercode.dialogs.Dialog;
 import org.cheercode.dialogs.CharacterDialog;
 import org.cheercode.factories.DeckFactory;
+import org.cheercode.result_analyzers.CardColorGameResultAnalyzer;
 import org.cheercode.renders.Render;
 
 import java.util.Collections;
