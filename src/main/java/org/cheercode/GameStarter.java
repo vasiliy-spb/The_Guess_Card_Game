@@ -1,18 +1,14 @@
 package org.cheercode;
 
+import org.cheercode.factories.MenuFactory;
 import org.cheercode.game.Game;
 import org.cheercode.game.GuessCardColorGame;
 import org.cheercode.game.GuessCardSuitGame;
 import org.cheercode.game.GuessCardTypeGame;
 import org.cheercode.menu.*;
-import org.cheercode.menu.items.GameVariantMenuItem;
-import org.cheercode.menu.items.MenuItem;
-import org.cheercode.menu.items.RenderVariantMenuItem;
 import org.cheercode.renders.ColoredConsoleRender;
 import org.cheercode.renders.MonochromeConsoleRender;
 import org.cheercode.renders.Render;
-
-import java.util.List;
 
 public class GameStarter {
     private Game game;
@@ -23,22 +19,11 @@ public class GameStarter {
     }
 
     private void init() {
-        String gameVariantMenuTitle = "Выберите вариант игры: ";
-        List<MenuItem<Integer, GameVariants>> gameVariantItems = List.of(
-                new GameVariantMenuItem(1, "Угадывать цвет карты", GameVariants.GUESS_COLOR_GAME),
-                new GameVariantMenuItem(2, "Угадывать масть карты", GameVariants.GUESS_SUIT_GAME),
-                new GameVariantMenuItem(3, "Угадывать тип карты", GameVariants.GUESS_TYPE_GAME)
-        );
-        GameMenu<Integer, GameVariants> gameVariantMenu = new GameVariantMenu(gameVariantMenuTitle, gameVariantItems);
+        GameMenu<Integer, GameVariants> gameVariantMenu = MenuFactory.getGameVariantMenu();
         gameVariantMenu.show();
         GameVariants selectedGameVariant = gameVariantMenu.select();
 
-        String renderVariantMenuTitle = "Выберите вариант отрисовки карт: ";
-        List<MenuItem<Integer, RenderVariants>> renderVariantItems = List.of(
-                new RenderVariantMenuItem(1, "Цветные карты", RenderVariants.COLORED_RENDER),
-                new RenderVariantMenuItem(2, "Монохромные карты", RenderVariants.MONOCHROME_RENDER)
-        );
-        GameMenu<Integer, RenderVariants> renderVariantMenu = new RenderVariantMenu(renderVariantMenuTitle, renderVariantItems);
+        GameMenu<Integer, RenderVariants> renderVariantMenu = MenuFactory.getRenderVariantMenu();
         renderVariantMenu.show();
         RenderVariants selectedRenderVariant = renderVariantMenu.select();
 
