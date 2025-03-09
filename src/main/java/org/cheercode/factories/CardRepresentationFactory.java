@@ -9,9 +9,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public final class CardRepresentationFactory {
-    public static final String RESET_CONSOLE_COLOR = "\u001B[0m";
-    public static final String RED_CONSOLE_COLOR = "\u001B[31m";
-    public static final String GREEN_CONSOLE_COLOR = "\u001B[32m";
+    private static final String RESET_CONSOLE_COLOR = "\u001B[0m";
+    private static final String RED_CONSOLE_COLOR = "\u001B[31m";
+    private static final String GREEN_CONSOLE_COLOR = "\u001B[32m";
+    private static final String TEMPLATE_PLACE_HOLDER = "%s";
 
     private CardRepresentationFactory() {
     }
@@ -60,7 +61,7 @@ public final class CardRepresentationFactory {
     }
 
     private static String putSuitValueOnTemplate(String template, String suitValue) {
-        return template.replace("%s", suitValue);
+        return template.replace(TEMPLATE_PLACE_HOLDER, suitValue);
     }
 
     private static CardColors determineColor(CardSuits suit) {
