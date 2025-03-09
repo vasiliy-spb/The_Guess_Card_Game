@@ -9,17 +9,16 @@ import java.util.Collections;
 import java.util.Stack;
 
 public abstract class GuessCardGame<T> implements Game {
-    protected final Stack<Card> deck;
-    protected final Render render;
-    protected final GameResultAnalyzer<T> gameResultAnalyzer;
+    protected int guessedCardsCount = 0;
+    private final Stack<Card> deck;
+    private final Render render;
+    private final GameResultAnalyzer<T> gameResultAnalyzer;
 
     public GuessCardGame(Render render, GameResultAnalyzer<T> gameResultAnalyzer) {
         this.render = render;
         this.gameResultAnalyzer = gameResultAnalyzer;
         this.deck = DeckFactory.createDeck();
     }
-
-    protected int guessedCardsCount = 0;
 
     @Override
     public void start() {
@@ -54,6 +53,7 @@ public abstract class GuessCardGame<T> implements Game {
             render.showLoseMessage();
         }
     }
+
     private Card getTurnCard() {
         return deck.pop();
     }
