@@ -7,11 +7,11 @@ public class MonochromeConsoleRender extends AbstractConsoleRender {
     @Override
     protected String getRepresentation(Card card) {
         String rankRepresentation = getRankRepresentation(card);
-        return card.getSuit().getValue() + " " + rankRepresentation;
+        return card.suit().getValue() + " " + rankRepresentation;
     }
 
     private String getRankRepresentation(Card card) {
-        CardRanks rank = card.getRank();
+        CardRanks rank = card.rank();
         return switch (rank) {
             case TWO -> "2";
             case THREE -> "3";

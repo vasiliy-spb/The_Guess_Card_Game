@@ -6,7 +6,7 @@ import org.cheercode.cards.CardRanks;
 public class CardRankGameResultAnalyzer implements GameResultAnalyzer<org.cheercode.cards.CardRanks> {
     @Override
     public boolean getResult(CardRanks selectedType, Card card) {
-        CardRanks cardRank = card.getRank();
+        CardRanks cardRank = card.rank();
         return selectedType.equals(cardRank);
     }
 }

@@ -21,8 +21,8 @@ public class ColoredConsoleRender extends AbstractConsoleRender {
     }
 
     private String getKey(Card card) {
-        CardSuits suit = card.getSuit();
-        CardRanks rank = card.getRank();
+        CardSuits suit = card.suit();
+        CardRanks rank = card.rank();
         return suit + "_" + rank;
     }
 }

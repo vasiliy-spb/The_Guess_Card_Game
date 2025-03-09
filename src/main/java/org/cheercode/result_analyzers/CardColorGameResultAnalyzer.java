@@ -6,6 +6,6 @@ import org.cheercode.cards.CardColors;
 public class CardColorGameResultAnalyzer implements GameResultAnalyzer<CardColors> {
     @Override
     public boolean getResult(CardColors selectedColor, Card card) {
-        return selectedColor.equals(card.getColor());
+        return selectedColor.equals(card.color());
     }
 }
