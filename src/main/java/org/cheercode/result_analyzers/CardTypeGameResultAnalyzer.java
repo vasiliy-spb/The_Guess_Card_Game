@@ -10,6 +10,7 @@ public class CardTypeGameResultAnalyzer implements GameResultAnalyzer<org.cheerc
         return switch (cardRank) {
             case TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN -> selectedType.equals(CardRanks.TEN);
             case JACK, QUEEN, KING, ACE -> selectedType.equals(CardRanks.ACE);
+            default -> false;
         };
     }
 }
