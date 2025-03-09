@@ -13,6 +13,7 @@ public final class CardRepresentationFactory {
     private static final String RED_CONSOLE_COLOR = "\u001B[31m";
     private static final String GREEN_CONSOLE_COLOR = "\u001B[32m";
     private static final String TEMPLATE_PLACE_HOLDER = "%s";
+    private static final String KEY_DELIMITER = "_";
 
     private CardRepresentationFactory() {
     }
@@ -30,7 +31,7 @@ public final class CardRepresentationFactory {
     }
 
     private static String getKey(CardSuits suit, CardRanks rank) {
-        return suit + "_" + rank;
+        return suit + KEY_DELIMITER + rank;
     }
 
     private static String getRepresentation(CardSuits suit, CardRanks rank) {
