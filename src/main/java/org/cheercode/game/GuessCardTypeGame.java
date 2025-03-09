@@ -4,7 +4,7 @@ import org.cheercode.cards.CardRanks;
 import org.cheercode.dialogs.CharacterDialog;
 import org.cheercode.dialogs.Dialog;
 import org.cheercode.renders.Render;
-import org.cheercode.result_analyzers.CardRankGameResultAnalyzer;
+import org.cheercode.result_analyzers.CardTypeGameResultAnalyzer;
 
 import java.util.Set;
 
@@ -13,7 +13,7 @@ public class GuessCardTypeGame extends GuessCardGame<CardRanks> {
     private static final char FACE_CARDS_KEY = 'f';
 
     public GuessCardTypeGame(Render render) {
-        super(render, new CardRankGameResultAnalyzer());
+        super(render, new CardTypeGameResultAnalyzer());
     }
 
     @Override
