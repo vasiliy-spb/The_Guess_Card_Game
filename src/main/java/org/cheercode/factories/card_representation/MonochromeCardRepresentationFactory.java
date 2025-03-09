@@ -1,4 +1,4 @@
-package org.cheercode.factories;
+package org.cheercode.factories.card_representation;
 
 import org.cheercode.cards.*;
 

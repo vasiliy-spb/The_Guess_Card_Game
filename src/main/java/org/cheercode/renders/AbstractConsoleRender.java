@@ -3,7 +3,7 @@ package org.cheercode.renders;
 import org.cheercode.cards.Card;
 import org.cheercode.cards.CardRanks;
 import org.cheercode.cards.CardSuits;
-import org.cheercode.factories.CardRepresentationFactory;
+import org.cheercode.factories.card_representation.CardRepresentationFactory;
 
 import java.util.Map;
 
