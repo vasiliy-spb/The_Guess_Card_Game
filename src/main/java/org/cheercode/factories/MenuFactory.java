@@ -16,7 +16,8 @@ public final class MenuFactory {
         List<MenuItem<Integer, GameVariants>> gameVariantItems = List.of(
                 new GameVariantMenuItem(1, "Угадывать цвет карты", GameVariants.GUESS_COLOR_GAME),
                 new GameVariantMenuItem(2, "Угадывать масть карты", GameVariants.GUESS_SUIT_GAME),
-                new GameVariantMenuItem(3, "Угадывать тип карты", GameVariants.GUESS_TYPE_GAME)
+                new GameVariantMenuItem(3, "Угадывать тип карты", GameVariants.GUESS_TYPE_GAME),
+                new GameVariantMenuItem(4, "Угадывать достоинство карты", GameVariants.GUESS_RANK_GAME)
         );
         return new GameVariantMenu(gameVariantMenuTitle, gameVariantItems);
     }

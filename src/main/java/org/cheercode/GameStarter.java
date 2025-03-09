@@ -1,10 +1,7 @@
 package org.cheercode;
 
 import org.cheercode.factories.MenuFactory;
-import org.cheercode.game.Game;
-import org.cheercode.game.GuessCardColorGame;
-import org.cheercode.game.GuessCardSuitGame;
-import org.cheercode.game.GuessCardTypeGame;
+import org.cheercode.game.*;
 import org.cheercode.menu.*;
 import org.cheercode.renders.ColoredConsoleRender;
 import org.cheercode.renders.MonochromeConsoleRender;
@@ -36,6 +33,7 @@ public class GameStarter {
             case GUESS_COLOR_GAME -> new GuessCardColorGame(render);
             case GUESS_SUIT_GAME -> new GuessCardSuitGame(render);
             case GUESS_TYPE_GAME -> new GuessCardTypeGame(render);
+            case GUESS_RANK_GAME -> new GuessCardRankGame(render);
             default -> throw new IllegalArgumentException("Game variant does not exist: " + gameVariant);
         };
     }
