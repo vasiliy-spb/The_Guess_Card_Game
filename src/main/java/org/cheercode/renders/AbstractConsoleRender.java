@@ -1,8 +1,20 @@
 package org.cheercode.renders;
 
 import org.cheercode.cards.Card;
+import org.cheercode.cards.CardRanks;
+import org.cheercode.cards.CardSuits;
+import org.cheercode.factories.CardRepresentationFactory;
+
+import java.util.Map;
 
 public abstract class AbstractConsoleRender implements Render {
+    private static final String KEY_DELIMITER = "_";
+    private final Map<String, String> cardRepresentations;
+
+    public AbstractConsoleRender(CardRepresentationFactory cardRepresentationFactory) {
+        this.cardRepresentations = cardRepresentationFactory.createCardRepresentations();
+    }
+
     @Override
     public void showHelloMessage() {
         System.out.println("""
@@ -25,7 +37,16 @@ public abstract class AbstractConsoleRender implements Render {
         System.out.println(representation);
     }
 
-    protected abstract String getRepresentation(Card card);
+    private String getRepresentation(Card card) {
+        String key = getKey(card);
+        return cardRepresentations.get(key);
+    }
+
+    private String getKey(Card card) {
+        CardSuits suit = card.suit();
+        CardRanks rank = card.rank();
+        return suit + KEY_DELIMITER + rank;
+    }
 
     @Override
     public void showVictoryMessage() {
