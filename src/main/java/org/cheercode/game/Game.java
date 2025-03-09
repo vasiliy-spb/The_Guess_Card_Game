@@ -12,6 +12,8 @@ import java.util.Set;
 import java.util.Stack;
 
 public class Game {
+    private static final char RED_KEY = 'r';
+    private static final char BLACK_KEY = 'b';
     private final Stack<Card> deck;
     private final Render render;
     private final GameResultAnalyzer gameResultAnalyzer;
@@ -37,7 +39,7 @@ public class Game {
     }
 
     private void nextTurn() {
-        CardColors selectedColor = askSelectedColor();
+        CardColors selectedColor = askColor();
         Card turnCard = getTurnCard();
         render.render(turnCard);
         processResult(selectedColor, turnCard);
@@ -45,8 +47,8 @@ public class Game {
     }
 
     private void processResult(CardColors selectedColor, Card turnCard) {
-        boolean won = gameResultAnalyzer.getResult(selectedColor, turnCard);
-        if (won) {
+        boolean isPlayerWon = gameResultAnalyzer.getResult(selectedColor, turnCard);
+        if (isPlayerWon) {
             render.showVictoryMessage();
             guessedCardsCount++;
         } else {
@@ -54,24 +56,26 @@ public class Game {
         }
     }
 
-    private CardColors askSelectedColor() {
+    private CardColors askColor() {
         String title = """
                 Выберите цвет карты:
                 R — красный
                 B — чёрный
                 """;
         String errorMessage = "Неправильный ввод";
-        final char redKey = 'r';
-        final char blackKey = 'b';
-        Set<Character> keys = Set.of(redKey, blackKey);
+        Set<Character> keys = Set.of(RED_KEY, BLACK_KEY);
 
         Dialog<Character> dialog = new CharacterDialog(title, errorMessage, keys);
-        char answer = dialog.input();
+        char selectedColorKey = dialog.input();
 
-        return switch (answer) {
-            case redKey -> CardColors.RED;
-            case blackKey -> CardColors.BLACK;
-            default -> throw new IllegalArgumentException("Unknown color for key: " + answer);
+        return getCardColor(selectedColorKey);
+    }
+
+    private static CardColors getCardColor(char selectedColorKey) {
+        return switch (selectedColorKey) {
+            case RED_KEY -> CardColors.RED;
+            case BLACK_KEY -> CardColors.BLACK;
+            default -> throw new IllegalArgumentException("Unknown color for key: " + selectedColorKey);
         };
     }
 
