@@ -9,9 +9,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public final class CardRepresentationFactory {
-    public static final String RESET = "\u001B[0m";
-    public static final String RED = "\u001B[31m";
-    public static final String GREEN = "\u001B[32m";
+    public static final String RESET_CONSOLE_COLOR = "\u001B[0m";
+    public static final String RED_CONSOLE_COLOR = "\u001B[31m";
+    public static final String GREEN_CONSOLE_COLOR = "\u001B[32m";
 
     private CardRepresentationFactory() {
     }
@@ -33,32 +33,34 @@ public final class CardRepresentationFactory {
     }
 
     private static String getRepresentation(CardSuits suit, CardRanks rank) {
-        String template =
-                switch (rank) {
-                    case TWO -> CardImagesTemplates.TWO;
-                    case THREE -> CardImagesTemplates.THREE;
-                    case FOUR -> CardImagesTemplates.FOUR;
-                    case FIVE -> CardImagesTemplates.FIVE;
-                    case SIX -> CardImagesTemplates.SIX;
-                    case SEVEN -> CardImagesTemplates.SEVEN;
-                    case EIGHT -> CardImagesTemplates.EIGHT;
-                    case NINE -> CardImagesTemplates.NINE;
-                    case TEN -> CardImagesTemplates.TEN;
-                    case JACK -> CardImagesTemplates.JACK;
-                    case QUEEN -> CardImagesTemplates.QUEEN;
-                    case KING -> CardImagesTemplates.KING;
-                    case ACE -> CardImagesTemplates.ACE;
-                };
+        String template = getTemplate(rank);
         String suitValue = suit.getValue();
-        String representation = template.replace("%s", suitValue);
-
+        String representation = putSuitValueOnTemplate(template, suitValue);
         CardColors color = determineColor(suit);
-        if (color.equals(CardColors.RED)) {
-            representation = RED + representation + RESET;
-        } else {
-            representation = GREEN + representation + RESET;
-        }
+        representation = paintRepresentation(color, representation);
         return representation;
+    }
+
+    private static String getTemplate(CardRanks rank) {
+        return switch (rank) {
+            case TWO -> CardImagesTemplates.TWO;
+            case THREE -> CardImagesTemplates.THREE;
+            case FOUR -> CardImagesTemplates.FOUR;
+            case FIVE -> CardImagesTemplates.FIVE;
+            case SIX -> CardImagesTemplates.SIX;
+            case SEVEN -> CardImagesTemplates.SEVEN;
+            case EIGHT -> CardImagesTemplates.EIGHT;
+            case NINE -> CardImagesTemplates.NINE;
+            case TEN -> CardImagesTemplates.TEN;
+            case JACK -> CardImagesTemplates.JACK;
+            case QUEEN -> CardImagesTemplates.QUEEN;
+            case KING -> CardImagesTemplates.KING;
+            case ACE -> CardImagesTemplates.ACE;
+        };
+    }
+
+    private static String putSuitValueOnTemplate(String template, String suitValue) {
+        return template.replace("%s", suitValue);
     }
 
     private static CardColors determineColor(CardSuits suit) {
@@ -66,5 +68,12 @@ public final class CardRepresentationFactory {
             return CardColors.RED;
         }
         return CardColors.BLACK;
+    }
+
+    private static String paintRepresentation(CardColors color, String representation) {
+        if (color.equals(CardColors.RED)) {
+            return RED_CONSOLE_COLOR + representation + RESET_CONSOLE_COLOR;
+        }
+        return GREEN_CONSOLE_COLOR + representation + RESET_CONSOLE_COLOR;
     }
 }
