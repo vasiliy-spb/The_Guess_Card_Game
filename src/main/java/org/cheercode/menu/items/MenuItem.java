@@ -1,9 +1,10 @@
 package org.cheercode.menu.items;
 
 public abstract class MenuItem<T, R> {
-    protected final T key;
-    protected final String title;
-    protected final R result;
+    private static final String REPRESENTATION_DELIMITER = " — ";
+    private final T key;
+    private final String title;
+    private final R result;
 
     public MenuItem(T key, String title, R result) {
         this.key = key;
@@ -12,7 +13,7 @@ public abstract class MenuItem<T, R> {
     }
 
     public String getStringRepresentation() {
-        return key + " — " + title;
+        return key + REPRESENTATION_DELIMITER + title;
     }
 
     public R getResult() {
