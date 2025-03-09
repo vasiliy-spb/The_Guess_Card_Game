@@ -1,4 +1,4 @@
-package org.cheercode.menu;
+package org.cheercode.menu.items;
 
 public abstract class MenuItem<T, R> {
     protected final T key;
@@ -13,5 +13,9 @@ public abstract class MenuItem<T, R> {
 
     public String getStringRepresentation() {
         return key + " — " + title;
+    }
+
+    public R getResult() {
+        return result;
     }
 }

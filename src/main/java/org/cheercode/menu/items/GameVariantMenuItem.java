@@ -1,4 +1,6 @@
-package org.cheercode.menu;
+package org.cheercode.menu.items;
+
+import org.cheercode.menu.GameVariants;
 
 public class GameVariantMenuItem extends MenuItem<Integer, GameVariants> {
 

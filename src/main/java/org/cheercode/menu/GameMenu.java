@@ -1,8 +1,10 @@
 package org.cheercode.menu;
 
+import org.cheercode.menu.items.MenuItem;
+
 import java.util.List;
 
-public abstract class GameMenu<K, R>{
+public abstract class GameMenu<K, R> {
     protected String title;
     protected List<MenuItem<K, R>> items;
 
@@ -19,4 +21,9 @@ public abstract class GameMenu<K, R>{
     }
 
     public abstract R select();
+
+    protected R getSelectedItem(int selectedItemNumber) {
+        MenuItem<K, R> selectedItem = items.get(selectedItemNumber - 1);
+        return selectedItem.getResult();
+    }
 }
