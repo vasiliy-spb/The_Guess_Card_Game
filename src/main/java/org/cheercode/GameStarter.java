@@ -1,7 +1,7 @@
 package org.cheercode;
 
 import org.cheercode.factories.MenuFactory;
-import org.cheercode.game.*;
+import org.cheercode.games.*;
 import org.cheercode.menu.*;
 import org.cheercode.renders.ColoredConsoleRender;
 import org.cheercode.renders.MonochromeConsoleRender;

@@ -1,4 +1,4 @@
-package org.cheercode.game;
+package org.cheercode.games;
 
 import org.cheercode.cards.CardColors;
 import org.cheercode.dialogs.Dialog;

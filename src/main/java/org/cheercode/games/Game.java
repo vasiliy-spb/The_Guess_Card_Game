@@ -1,4 +1,4 @@
-package org.cheercode.game;
+package org.cheercode.games;
 
 public interface Game {
     void start();
