@@ -5,8 +5,8 @@ import org.cheercode.menu.items.MenuItem;
 import java.util.List;
 
 public abstract class GameMenu<K, R> {
-    protected String title;
     protected List<MenuItem<K, R>> items;
+    private final String title;
 
     public GameMenu(String title, List<MenuItem<K, R>> items) {
         this.title = title;
