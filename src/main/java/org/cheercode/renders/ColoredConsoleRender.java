@@ -8,6 +8,7 @@ import org.cheercode.factories.CardRepresentationFactory;
 import java.util.Map;
 
 public class ColoredConsoleRender extends AbstractConsoleRender {
+    private static final String KEY_DELIMITER = "_";
     private final Map<String, String> cardRepresentations;
 
     public ColoredConsoleRender() {
@@ -23,6 +24,6 @@ public class ColoredConsoleRender extends AbstractConsoleRender {
     private String getKey(Card card) {
         CardSuits suit = card.suit();
         CardRanks rank = card.rank();
-        return suit + "_" + rank;
+        return suit + KEY_DELIMITER + rank;
     }
 }
