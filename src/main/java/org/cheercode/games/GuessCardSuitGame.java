@@ -1,5 +1,6 @@
 package org.cheercode.games;
 
+import org.cheercode.cards.Card;
 import org.cheercode.cards.CardSuits;
 import org.cheercode.dialogs.CharacterDialog;
 import org.cheercode.dialogs.Dialog;
@@ -13,6 +14,7 @@ public class GuessCardSuitGame extends GuessCardGame<CardSuits> {
     private static final char DIAMONDS_KEY = 'd';
     private static final char CLUBS_KEY = 'c';
     private static final char SPADES_KEY = 's';
+    private static final String WIN_SUIT_MESSAGE = "Вы угадали масть карты!";
 
     public GuessCardSuitGame(Render render) {
         super(render, new CardSuitsGameResultAnalyzer());
@@ -44,5 +46,16 @@ public class GuessCardSuitGame extends GuessCardGame<CardSuits> {
             case SPADES_KEY -> CardSuits.SPADES;
             default -> throw new IllegalArgumentException("Unknown suit for key: " + selectedSuitsKey);
         };
+    }
+
+    @Override
+    protected void processResult(CardSuits selectedSuit, Card turnCard) {
+        boolean isPlayerWon = gameResultAnalyzer.getResult(selectedSuit, turnCard);
+        if (isPlayerWon) {
+            render.showMessage(WIN_SUIT_MESSAGE);
+            guessedCardsCount++;
+        } else {
+            render.showLoseMessage();
+        }
     }
 }

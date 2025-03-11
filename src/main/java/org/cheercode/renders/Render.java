@@ -9,7 +9,7 @@ public interface Render {
 
     void render(Card card);
 
-    void showVictoryMessage();
-
     void showLoseMessage();
+
+    void showMessage(String message);
 }

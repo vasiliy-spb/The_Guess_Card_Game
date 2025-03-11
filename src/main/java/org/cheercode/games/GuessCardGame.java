@@ -10,9 +10,9 @@ import java.util.Stack;
 
 public abstract class GuessCardGame<T> implements Game {
     protected int guessedCardsCount = 0;
+    protected final Render render;
+    protected final GameResultAnalyzer<T> gameResultAnalyzer;
     private final Stack<Card> deck;
-    private final Render render;
-    private final GameResultAnalyzer<T> gameResultAnalyzer;
 
     public GuessCardGame(Render render, GameResultAnalyzer<T> gameResultAnalyzer) {
         this.render = render;
@@ -44,15 +44,7 @@ public abstract class GuessCardGame<T> implements Game {
 
     protected abstract T askUserChoice();
 
-    private void processResult(T selectedAnswer, Card turnCard) {
-        boolean isPlayerWon = gameResultAnalyzer.getResult(selectedAnswer, turnCard);
-        if (isPlayerWon) {
-            render.showVictoryMessage();
-            guessedCardsCount++;
-        } else {
-            render.showLoseMessage();
-        }
-    }
+    protected abstract void processResult(T selectedAnswer, Card turnCard);
 
     private Card getTurnCard() {
         return deck.pop();

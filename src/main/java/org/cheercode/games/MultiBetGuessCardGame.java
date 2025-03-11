@@ -17,6 +17,7 @@ public class MultiBetGuessCardGame extends GuessCardGame<CardAttribute> {
     private static final char SPADES_KEY = 's';
     private static final char NUMBERS_KEY = 'n';
     private static final char FACES_KEY = 'f';
+    private static final String WIN_CARD_MESSAGE = "Вы угадали карту!";
 
     public MultiBetGuessCardGame(Render render) {
         super(render, new MultiBetGameResultAnalyzer());
@@ -52,5 +53,16 @@ public class MultiBetGuessCardGame extends GuessCardGame<CardAttribute> {
             case FACES_KEY -> CardRanks.ACE;
             default -> throw new IllegalArgumentException("Unknown card attribute for key: " + attributeKey);
         };
+    }
+
+    @Override
+    protected void processResult(CardAttribute selectedAttribute, Card turnCard) {
+        boolean isPlayerWon = gameResultAnalyzer.getResult(selectedAttribute, turnCard);
+        if (isPlayerWon) {
+            render.showMessage(WIN_CARD_MESSAGE);
+            guessedCardsCount++;
+        } else {
+            render.showLoseMessage();
+        }
     }
 }

@@ -1,5 +1,6 @@
 package org.cheercode.games;
 
+import org.cheercode.cards.Card;
 import org.cheercode.cards.CardColors;
 import org.cheercode.dialogs.Dialog;
 import org.cheercode.dialogs.CharacterDialog;
@@ -11,6 +12,7 @@ import java.util.Set;
 public class GuessCardColorGame extends GuessCardGame<CardColors> {
     private static final char RED_KEY = 'r';
     private static final char BLACK_KEY = 'b';
+    private static final String WIN_COLOR_MESSAGE = "Вы угадали цвет карты!";
 
     public GuessCardColorGame(Render render) {
         super(render, new CardColorGameResultAnalyzer());
@@ -38,5 +40,16 @@ public class GuessCardColorGame extends GuessCardGame<CardColors> {
             case BLACK_KEY -> CardColors.BLACK;
             default -> throw new IllegalArgumentException("Unknown color for key: " + selectedColorKey);
         };
+    }
+
+    @Override
+    protected void processResult(CardColors selectedColor, Card turnCard) {
+        boolean isPlayerWon = gameResultAnalyzer.getResult(selectedColor, turnCard);
+        if (isPlayerWon) {
+            render.showMessage(WIN_COLOR_MESSAGE);
+            guessedCardsCount++;
+        } else {
+            render.showLoseMessage();
+        }
     }
 }

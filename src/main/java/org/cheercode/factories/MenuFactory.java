@@ -18,7 +18,8 @@ public final class MenuFactory {
                 new GameVariantMenuItem(2, "Угадывать масть карты", GameVariants.GUESS_SUIT_GAME),
                 new GameVariantMenuItem(3, "Угадывать тип карты", GameVariants.GUESS_TYPE_GAME),
                 new GameVariantMenuItem(4, "Угадывать достоинство карты", GameVariants.GUESS_RANK_GAME),
-                new GameVariantMenuItem(5, "Угадывать любой атрибут карты", GameVariants.MULTI_BET_GAME)
+                new GameVariantMenuItem(5, "Угадывать любой атрибут карты", GameVariants.MULTI_BET_GAME),
+                new GameVariantMenuItem(6, "Угадывать любой атрибут карты по супер ставке", GameVariants.SUPER_BET_GAME)
         );
         return new GameVariantMenu(gameVariantMenuTitle, gameVariantItems);
     }

@@ -1,12 +1,13 @@
 package org.cheercode.games;
 
+import org.cheercode.cards.Card;
 import org.cheercode.cards.CardRanks;
 import org.cheercode.dialogs.Dialog;
 import org.cheercode.dialogs.StringDialog;
 import org.cheercode.renders.Render;
 import org.cheercode.result_analyzers.CardRankGameResultAnalyzer;
 
-import java.util.List;
+import java.util.Set;
 
 public class GuessCardRankGame extends GuessCardGame<CardRanks> {
     private static final String TWO_KEY = "2";
@@ -22,6 +23,7 @@ public class GuessCardRankGame extends GuessCardGame<CardRanks> {
     private static final String QUEEN_KEY = "Q";
     private static final String KING_KEY = "K";
     private static final String ACE_KEY = "A";
+    private static final String WIN_RANK_MESSAGE = "Вы угадали достоинство карты!";
 
     public GuessCardRankGame(Render render) {
         super(render, new CardRankGameResultAnalyzer());
@@ -38,7 +40,7 @@ public class GuessCardRankGame extends GuessCardGame<CardRanks> {
                 A — туз
                 """;
         String errorMessage = "Неправильный ввод";
-        List<String> keys = List.of(TWO_KEY, THREE_KEY, FOUR_KEY, FIVE_KEY, SIX_KEY, SEVEN_KEY, EIGHT_KEY, NINE_KEY, TEN_KEY, JACK_KEY, QUEEN_KEY, KING_KEY, ACE_KEY);
+        Set<String> keys = Set.of(TWO_KEY, THREE_KEY, FOUR_KEY, FIVE_KEY, SIX_KEY, SEVEN_KEY, EIGHT_KEY, NINE_KEY, TEN_KEY, JACK_KEY, QUEEN_KEY, KING_KEY, ACE_KEY);
 
         Dialog<String> dialog = new StringDialog(title, errorMessage, keys);
         String selectedRankKey = dialog.input();
@@ -62,5 +64,16 @@ public class GuessCardRankGame extends GuessCardGame<CardRanks> {
             case ACE_KEY -> CardRanks.ACE;
             default -> throw new IllegalArgumentException("Unknown rank for key: " + rankKey);
         };
+    }
+
+    @Override
+    protected void processResult(CardRanks selectedRank, Card turnCard) {
+        boolean isPlayerWon = gameResultAnalyzer.getResult(selectedRank, turnCard);
+        if (isPlayerWon) {
+            render.showMessage(WIN_RANK_MESSAGE);
+            guessedCardsCount++;
+        } else {
+            render.showLoseMessage();
+        }
     }
 }
