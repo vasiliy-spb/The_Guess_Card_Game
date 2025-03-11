@@ -34,6 +34,7 @@ public class GameStarter {
             case GUESS_SUIT_GAME -> new GuessCardSuitGame(render);
             case GUESS_TYPE_GAME -> new GuessCardTypeGame(render);
             case GUESS_RANK_GAME -> new GuessCardRankGame(render);
+            case MULTI_BET_GAME -> new MultiBetGuessCardGame(render);
             default -> throw new IllegalArgumentException("Game variant does not exist: " + gameVariant);
         };
     }

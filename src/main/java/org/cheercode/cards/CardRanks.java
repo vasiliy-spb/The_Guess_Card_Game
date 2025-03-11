@@ -1,6 +1,6 @@
 package org.cheercode.cards;
 
-public enum CardRanks {
+public enum CardRanks implements CardAttribute {
     TWO,
     THREE,
     FOUR,

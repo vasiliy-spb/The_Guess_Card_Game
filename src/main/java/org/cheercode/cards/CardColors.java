@@ -1,6 +1,6 @@
 package org.cheercode.cards;
 
-public enum CardColors {
+public enum CardColors implements CardAttribute {
     RED,
     BLACK;
 }

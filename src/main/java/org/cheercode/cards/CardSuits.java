@@ -1,6 +1,6 @@
 package org.cheercode.cards;
 
-public enum CardSuits {
+public enum CardSuits implements CardAttribute {
     HEARTS("♥"),
     DIAMONDS("♦"),
     CLUBS("♣"),
