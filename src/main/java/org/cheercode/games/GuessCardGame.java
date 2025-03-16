@@ -10,16 +10,14 @@ import org.cheercode.renders.Render;
 import org.cheercode.result_analyzers.BaseGameResultAnalyzer;
 import org.cheercode.result_analyzers.GameResultAnalyzer;
 
-import java.util.Collections;
 import java.util.Set;
-import java.util.Stack;
 
 public abstract class GuessCardGame implements Game {
     private static final int INITIAL_SCORE = 10;
     private static final int MAX_SCORE = 20;
     private static final int MIN_SCORE = 0;
     protected int guessedCardsCount = 0;
-    private final Stack<Card> deck;
+    private final Deck deck;
     private final Render render;
     private final GameResultAnalyzer gameResultAnalyzer;
     private final ScoreCounter scoreCounter;
@@ -47,12 +45,16 @@ public abstract class GuessCardGame implements Game {
     }
 
     private void shuffleDeck() {
-        Collections.shuffle(deck);
+        deck.shuffle();
     }
 
     private boolean isGameOver() {
         int currentScore = scoreCounter.getScore();
-        return currentScore >= MAX_SCORE || currentScore <= MIN_SCORE || deck.empty();
+        return scoreOutOfBound(currentScore) || deck.isEmpty();
+    }
+
+    private static boolean scoreOutOfBound(int score) {
+        return score >= MAX_SCORE || score <= MIN_SCORE;
     }
 
     private void nextTurn() {
@@ -78,7 +80,7 @@ public abstract class GuessCardGame implements Game {
     }
 
     private Card getTurnCard() {
-        return deck.pop();
+        return deck.take();
     }
 
     private void processResult(Bet usersBet, Card turnCard) {

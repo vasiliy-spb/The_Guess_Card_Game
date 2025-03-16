@@ -4,7 +4,7 @@ import org.cheercode.renders.Render;
 
 import java.util.Set;
 
-import static org.cheercode.Keys.*;
+import static org.cheercode.games.KeyConstants.*;
 
 public class GuessCardSuitGame extends GuessCardGame {
     private static final String DIALOG_TITLE = """
