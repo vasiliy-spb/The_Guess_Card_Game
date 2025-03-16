@@ -4,8 +4,8 @@ import org.cheercode.renders.Render;
 
 import java.util.Set;
 
-import static org.cheercode.games.KeyConstants.BLACK_KEY;
-import static org.cheercode.games.KeyConstants.RED_KEY;
+import static org.cheercode.games.AttributeKeys.BLACK_KEY;
+import static org.cheercode.games.AttributeKeys.RED_KEY;
 
 public class GuessCardColorGame extends GuessCardGame {
     private static final String DIALOG_TITLE = """

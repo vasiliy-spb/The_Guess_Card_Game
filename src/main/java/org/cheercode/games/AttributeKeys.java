@@ -1,6 +1,6 @@
 package org.cheercode.games;
 
-public final class KeyConstants {
+public final class AttributeKeys {
     public static final String RED_KEY = "R";
     public static final String BLACK_KEY = "B";
     public static final String HEARTS_KEY = "H";
@@ -22,6 +22,7 @@ public final class KeyConstants {
     public static final String QUEEN_KEY = "Q";
     public static final String KING_KEY = "K";
     public static final String ACE_KEY = "A";
-    private KeyConstants() {
+
+    private AttributeKeys() {
     }
 }

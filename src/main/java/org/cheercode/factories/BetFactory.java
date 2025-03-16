@@ -6,7 +6,7 @@ import org.cheercode.cards.CardColors;
 import org.cheercode.cards.CardRanks;
 import org.cheercode.cards.CardSuits;
 
-import static org.cheercode.games.KeyConstants.*;
+import static org.cheercode.games.AttributeKeys.*;
 
 public final class BetFactory {
     private BetFactory() {
