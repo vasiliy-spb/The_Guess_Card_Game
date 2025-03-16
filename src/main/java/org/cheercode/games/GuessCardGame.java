@@ -2,7 +2,6 @@ package org.cheercode.games;
 
 import org.cheercode.bets.Bet;
 import org.cheercode.bets.BetType;
-import org.cheercode.ScoreCounter;
 import org.cheercode.cards.Card;
 import org.cheercode.cards.CardColors;
 import org.cheercode.cards.CardRanks;

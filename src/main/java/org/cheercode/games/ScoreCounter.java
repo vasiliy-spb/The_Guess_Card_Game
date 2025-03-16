@@ -1,4 +1,4 @@
-package org.cheercode;
+package org.cheercode.games;
 
 import org.cheercode.bets.Bet;
 import org.cheercode.bets.BetType;
