@@ -24,9 +24,10 @@ public abstract class AbstractConsoleRender implements Render {
     }
 
     @Override
-    public void showStatistics(int deckSize, int guessedCardsCount) {
+    public void showStatistics(int deckSize, int guessedCardsCount, int score) {
         System.out.printf("Карт в колоде: %d\n", deckSize);
         System.out.printf("Угадано: %d\n", guessedCardsCount);
+        System.out.printf("Счёт: %d\n", score);
         System.out.println("-------");
     }
 
@@ -49,14 +50,24 @@ public abstract class AbstractConsoleRender implements Render {
     }
 
     @Override
-    public void showVictoryMessage() {
+    public void showTurnVictoryMessage() {
         System.out.println("ВЫ УГАДАЛИ!");
         System.out.println();
     }
 
     @Override
-    public void showLoseMessage() {
+    public void showTurnLoseMessage() {
         System.out.println("Вы не угадали..");
         System.out.println();
+    }
+
+    @Override
+    public void showGameVictoryMessage() {
+        System.out.println("ВЫ ПОБЕДИЛИ!");
+    }
+
+    @Override
+    public void showGameLoseMessage() {
+        System.out.println("Вы проиграли..");
     }
 }
