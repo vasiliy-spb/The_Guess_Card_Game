@@ -4,6 +4,9 @@ import org.cheercode.renders.Render;
 
 import java.util.Set;
 
+import static org.cheercode.Keys.BLACK_KEY;
+import static org.cheercode.Keys.RED_KEY;
+
 public class GuessCardColorGame extends GuessCardGame {
     private static final String DIALOG_TITLE = """
             Выберите цвет карты:

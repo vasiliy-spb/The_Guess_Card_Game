@@ -4,6 +4,9 @@ import org.cheercode.renders.Render;
 
 import java.util.Set;
 
+import static org.cheercode.Keys.FACES_KEY;
+import static org.cheercode.Keys.NUMBERS_KEY;
+
 public class GuessCardTypeGame extends GuessCardGame {
     private static final String DIALOG_TITLE = """
             Выберите тип карты:

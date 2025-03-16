@@ -4,6 +4,8 @@ import org.cheercode.renders.Render;
 
 import java.util.Set;
 
+import static org.cheercode.Keys.*;
+
 public class MultiBetGuessCardGame extends GuessCardGame {
     private static final String DIALOG_TITLE = """
             Возможные ставки:

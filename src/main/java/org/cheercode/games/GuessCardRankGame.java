@@ -4,6 +4,8 @@ import org.cheercode.renders.Render;
 
 import java.util.Set;
 
+import static org.cheercode.Keys.*;
+
 public class GuessCardRankGame extends GuessCardGame {
     private static final String DIALOG_TITLE = """
             Выберите достоинство карты:
