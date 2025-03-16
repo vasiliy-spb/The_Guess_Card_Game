@@ -1,8 +1,8 @@
 package org.cheercode;
 
-import org.cheercode.factories.GameVariantMenuFactory;
-import org.cheercode.factories.MenuFactory;
-import org.cheercode.factories.RenderVariantMenuFactory;
+import org.cheercode.factories.menu.GameVariantMenuFactory;
+import org.cheercode.factories.menu.MenuFactory;
+import org.cheercode.factories.menu.RenderVariantMenuFactory;
 import org.cheercode.games.*;
 import org.cheercode.menu.*;
 import org.cheercode.renders.ColoredConsoleRender;

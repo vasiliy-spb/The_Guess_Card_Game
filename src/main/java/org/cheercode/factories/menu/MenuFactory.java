@@ -1,4 +1,4 @@
-package org.cheercode.factories;
+package org.cheercode.factories.menu;
 
 import org.cheercode.menu.*;
 
