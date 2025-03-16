@@ -1,6 +1,6 @@
 package org.cheercode.factories;
 
-import org.cheercode.games.Deck;
+import org.cheercode.deck.Deck;
 import org.cheercode.cards.Card;
 import org.cheercode.cards.CardColors;
 import org.cheercode.cards.CardRanks;

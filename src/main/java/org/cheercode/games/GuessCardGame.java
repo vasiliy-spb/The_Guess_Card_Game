@@ -2,6 +2,7 @@ package org.cheercode.games;
 
 import org.cheercode.bets.Bet;
 import org.cheercode.cards.Card;
+import org.cheercode.deck.Deck;
 import org.cheercode.dialogs.Dialog;
 import org.cheercode.dialogs.StringDialog;
 import org.cheercode.factories.BetFactory;

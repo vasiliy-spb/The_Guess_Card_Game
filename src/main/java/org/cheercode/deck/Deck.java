@@ -1,4 +1,4 @@
-package org.cheercode.games;
+package org.cheercode.deck;
 
 import org.cheercode.cards.Card;
 
