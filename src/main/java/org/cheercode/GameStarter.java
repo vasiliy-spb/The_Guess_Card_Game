@@ -1,6 +1,8 @@
 package org.cheercode;
 
+import org.cheercode.factories.GameVariantMenuFactory;
 import org.cheercode.factories.MenuFactory;
+import org.cheercode.factories.RenderVariantMenuFactory;
 import org.cheercode.games.*;
 import org.cheercode.menu.*;
 import org.cheercode.renders.ColoredConsoleRender;
@@ -16,16 +18,26 @@ public class GameStarter {
     }
 
     private void init() {
-        GameMenu<Integer, GameVariants> gameVariantMenu = MenuFactory.getGameVariantMenu();
+        MenuFactory<GameVariants> gameVariantsMenuFactory = new GameVariantMenuFactory();
+        GameMenu<Integer, GameVariants> gameVariantMenu = gameVariantsMenuFactory.getMenu();
         gameVariantMenu.show();
         GameVariants selectedGameVariant = gameVariantMenu.select();
 
-        GameMenu<Integer, RenderVariants> renderVariantMenu = MenuFactory.getRenderVariantMenu();
+        MenuFactory<RenderVariants> renderVariantsMenuFactory = new RenderVariantMenuFactory();
+        GameMenu<Integer, RenderVariants> renderVariantMenu = renderVariantsMenuFactory.getMenu();
         renderVariantMenu.show();
         RenderVariants selectedRenderVariant = renderVariantMenu.select();
 
         initRender(selectedRenderVariant);
         initGame(selectedGameVariant);
+    }
+
+    private void initRender(RenderVariants renderVariant) {
+        this.render = switch (renderVariant) {
+            case COLORED_RENDER -> new ColoredConsoleRender();
+            case MONOCHROME_RENDER -> new MonochromeConsoleRender();
+            default -> throw new IllegalArgumentException("Render does not exist for render variant: " + renderVariant);
+        };
     }
 
     private void initGame(GameVariants gameVariant) {
@@ -36,14 +48,6 @@ public class GameStarter {
             case GUESS_RANK_GAME -> new GuessCardRankGame(render);
             case MULTI_BET_GAME -> new MultiBetGuessCardGame(render);
             default -> throw new IllegalArgumentException("Game variant does not exist: " + gameVariant);
-        };
-    }
-
-    private void initRender(RenderVariants renderVariant) {
-        this.render = switch (renderVariant) {
-            case COLORED_RENDER -> new ColoredConsoleRender();
-            case MONOCHROME_RENDER -> new MonochromeConsoleRender();
-            default -> throw new IllegalArgumentException("Render does not exist for render variant: " + renderVariant);
         };
     }
 
