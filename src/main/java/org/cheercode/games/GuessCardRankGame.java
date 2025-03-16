@@ -9,12 +9,12 @@ import static org.cheercode.games.AttributeKeys.*;
 public class GuessCardRankGame extends GuessCardGame {
     private static final String DIALOG_TITLE = """
             Выберите достоинство карты:
-            2 - 10 — числовая карта
-            J — валет
-            Q — дама
-            K — король
-            A — туз
-            """;
+            %s - %s — числовая карта
+            %s — валет
+            %s — дама
+            %s — король
+            %s — туз
+            """.formatted(TWO_KEY, TEN_KEY, JACK_KEY, QUEEN_KEY, KING_KEY, ACE_KEY);
     private static final Set<String> DIALOG_KEYS = Set.of(TWO_KEY, THREE_KEY, FOUR_KEY, FIVE_KEY, SIX_KEY, SEVEN_KEY, EIGHT_KEY, NINE_KEY, TEN_KEY, JACK_KEY, QUEEN_KEY, KING_KEY, ACE_KEY);
 
     public GuessCardRankGame(Render render) {

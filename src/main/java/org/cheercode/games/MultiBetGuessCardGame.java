@@ -9,12 +9,15 @@ import static org.cheercode.games.AttributeKeys.*;
 public class MultiBetGuessCardGame extends GuessCardGame {
     private static final String DIALOG_TITLE = """
             Возможные ставки:
-            Цвет (R — красный, B — чёрный)
-            Масть (H — червы, D — бубны, C — трефы, S — пики)
-            Картинка или числовая карта (N — числовая, F — картинка)
-            Достоинство (2-10, J, Q, K, A)
+            Цвет (%s — красный, %s — чёрный)
+            Масть (%s — червы, %s — бубны, %s — трефы, %s — пики)
+            Картинка или числовая карта (%s — числовая, %s — картинка)
+            Достоинство (%s - %s, %s, %s, %s, %s)
             Сделайте ставку:
-            """;
+            """.formatted(RED_KEY, BLACK_KEY,
+            HEARTS_KEY, DIAMONDS_KEY, CLUBS_KEY, SPADES_KEY,
+            NUMBERS_KEY, FACES_KEY,
+            TWO_KEY, TEN_KEY, JACK_KEY, QUEEN_KEY, KING_KEY, ACE_KEY);
     private static final Set<String> DIALOG_KEYS = Set.of(
             RED_KEY, BLACK_KEY,
             HEARTS_KEY, DIAMONDS_KEY, CLUBS_KEY, SPADES_KEY,

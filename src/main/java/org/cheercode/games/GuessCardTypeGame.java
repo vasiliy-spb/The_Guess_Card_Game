@@ -10,9 +10,9 @@ import static org.cheercode.games.AttributeKeys.NUMBERS_KEY;
 public class GuessCardTypeGame extends GuessCardGame {
     private static final String DIALOG_TITLE = """
             Выберите тип карты:
-            N — числовая карта
-            F — карта с картинкой или туз
-            """;
+            %s — числовая карта
+            %s — карта с картинкой или туз
+            """.formatted(NUMBERS_KEY, FACES_KEY);
     private static final Set<String> DIALOG_KEYS = Set.of(NUMBERS_KEY, FACES_KEY);
 
     public GuessCardTypeGame(Render render) {
