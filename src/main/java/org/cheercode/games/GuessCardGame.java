@@ -15,15 +15,16 @@ import java.util.Set;
 
 public abstract class GuessCardGame implements Game {
     private static final int INITIAL_SCORE = 10;
-    private static final int MAX_SCORE = 20;
     private static final int MIN_SCORE = 0;
-    protected int guessedCardsCount = 0;
+    private static final int MAX_SCORE = 20;
+    private static final String ERROR_MESSAGE_FOR_DIALOG = "Неправильный ввод";
+    private final String dialogTitle;
+    private final Set<String> dialogKeys;
     private final Deck deck;
     private final Render render;
     private final GameResultAnalyzer gameResultAnalyzer;
     private final ScoreCounter scoreCounter;
-    private final String dialogTitle;
-    private final Set<String> dialogKeys;
+    private int guessedCardsCount = 0;
 
     public GuessCardGame(Render render, String dialogTitle, Set<String> dialogKeys) {
         this.render = render;
@@ -76,9 +77,7 @@ public abstract class GuessCardGame implements Game {
     }
 
     private Bet askUserChoice() {
-        String errorMessage = "Неправильный ввод";
-
-        Dialog<String> dialog = new StringDialog(dialogTitle, errorMessage, dialogKeys);
+        Dialog<String> dialog = new StringDialog(dialogTitle, ERROR_MESSAGE_FOR_DIALOG, dialogKeys);
         String selectedAttributeKey = dialog.input();
 
         return getBet(selectedAttributeKey);
