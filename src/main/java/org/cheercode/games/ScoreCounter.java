@@ -28,7 +28,7 @@ public class ScoreCounter {
         return score;
     }
 
-    public void addScore(Bet bet) {
+    public void addBetScore(Bet bet) {
         BetType betType = bet.type();
         score += switch (betType) {
             case COLOR -> COLOR_BONUS;
@@ -40,7 +40,7 @@ public class ScoreCounter {
         score = Math.min(score, maxScore);
     }
 
-    public void subtractScore(Bet bet) {
+    public void subtractBetScore(Bet bet) {
         BetType betType = bet.type();
         score -= switch (betType) {
             case COLOR -> COLOR_PENALTY;

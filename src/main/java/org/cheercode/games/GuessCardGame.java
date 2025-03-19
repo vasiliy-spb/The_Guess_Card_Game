@@ -93,11 +93,11 @@ public abstract class GuessCardGame implements Game {
     private void processResult(Bet usersBet, Card turnCard) {
         boolean isPlayerWon = gameResultAnalyzer.getResult(usersBet, turnCard);
         if (isPlayerWon) {
-            scoreCounter.addScore(usersBet);
+            scoreCounter.addBetScore(usersBet);
             render.showTurnVictoryMessage();
             guessedCardsCount++;
         } else {
-            scoreCounter.subtractScore(usersBet);
+            scoreCounter.subtractBetScore(usersBet);
             render.showTurnLoseMessage();
         }
     }
