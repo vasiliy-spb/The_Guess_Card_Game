@@ -29,7 +29,7 @@ public abstract class GuessCardGame implements Game {
         this.render = render;
         this.gameResultAnalyzer = new BaseGameResultAnalyzer();
         this.deck = DeckFactory.createDeck();
-        this.scoreCounter = new ScoreCounter(INITIAL_SCORE);
+        this.scoreCounter = new ScoreCounter(INITIAL_SCORE, MIN_SCORE, MAX_SCORE);
         this.dialogTitle = dialogTitle;
         this.dialogKeys = dialogKeys;
     }
@@ -37,7 +37,9 @@ public abstract class GuessCardGame implements Game {
     @Override
     public void start() {
         render.showHelloMessage();
-        render.showStatistics(deck.size(), guessedCardsCount, scoreCounter.getScore());
+        int deckSize = deck.size();
+        int currentScore = scoreCounter.getScore();
+        render.showStatistics(deckSize, guessedCardsCount, currentScore);
         shuffleDeck();
         while (!isGameOver()) {
             nextTurn();
@@ -62,8 +64,12 @@ public abstract class GuessCardGame implements Game {
         Bet selectedAnswer = askUserChoice();
         Card turnCard = getTurnCard();
         render.render(turnCard);
+
         processResult(selectedAnswer, turnCard);
-        render.showStatistics(deck.size(), guessedCardsCount, scoreCounter.getScore());
+
+        int deckSize = deck.size();
+        int currentScore = scoreCounter.getScore();
+        render.showStatistics(deckSize, guessedCardsCount, currentScore);
     }
 
     private Bet askUserChoice() {

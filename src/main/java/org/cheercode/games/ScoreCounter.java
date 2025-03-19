@@ -4,8 +4,6 @@ import org.cheercode.bets.Bet;
 import org.cheercode.bets.BetType;
 
 public class ScoreCounter {
-    private static final int MIN_SCORE = 0;
-    private static final int MAX_SCORE = 20;
     private static final int COLOR_BONUS = 1;
     private static final int SUIT_BONUS = 2;
     private static final int NUMBER_BONUS = 1;
@@ -16,10 +14,14 @@ public class ScoreCounter {
     private static final int NUMBER_PENALTY = 2;
     private static final int FACE_PENALTY = 1;
     private static final int RANK_PENALTY = 3;
+    private final int minScore;
+    private final int maxScore;
     private int score;
 
-    public ScoreCounter(int score) {
+    public ScoreCounter(int score, int minScore, int maxScore) {
         this.score = score;
+        this.minScore = minScore;
+        this.maxScore = maxScore;
     }
 
     public int getScore() {
@@ -35,7 +37,7 @@ public class ScoreCounter {
             case FACE -> FACE_BONUS;
             case RANK -> RANK_BONUS;
         };
-        score = Math.min(score, MAX_SCORE);
+        score = Math.min(score, maxScore);
     }
 
     public void subtractScore(Bet bet) {
@@ -47,6 +49,6 @@ public class ScoreCounter {
             case FACE -> FACE_PENALTY;
             case RANK -> RANK_PENALTY;
         };
-        score = Math.max(score, MIN_SCORE);
+        score = Math.max(score, minScore);
     }
 }
