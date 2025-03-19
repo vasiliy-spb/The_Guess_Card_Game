@@ -41,6 +41,9 @@ public class GameStarter {
     }
 
     private void initGame(GameVariants gameVariant) {
+        if (render == null) {
+            throw new IllegalStateException("The render should be initialized before game creating.");
+        }
         this.game = switch (gameVariant) {
             case GUESS_COLOR_GAME -> new GuessCardColorGame(render);
             case GUESS_SUIT_GAME -> new GuessCardSuitGame(render);
