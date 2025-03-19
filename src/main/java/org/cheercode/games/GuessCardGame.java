@@ -40,10 +40,13 @@ public abstract class GuessCardGame implements Game {
         int deckSize = deck.size();
         int currentScore = scoreCounter.getScore();
         render.showStatistics(deckSize, guessedCardsCount, currentScore);
+
         shuffleDeck();
+
         while (!isGameOver()) {
             nextTurn();
         }
+
         showGameResult();
     }
 
@@ -93,20 +96,32 @@ public abstract class GuessCardGame implements Game {
     private void processResult(Bet usersBet, Card turnCard) {
         boolean isPlayerWon = gameResultAnalyzer.getResult(usersBet, turnCard);
         if (isPlayerWon) {
-            scoreCounter.addBetScore(usersBet);
-            render.showTurnVictoryMessage();
-            guessedCardsCount++;
+            processWinning(usersBet);
         } else {
-            scoreCounter.subtractBetScore(usersBet);
-            render.showTurnLoseMessage();
+            processLoss(usersBet);
         }
     }
 
+    private void processWinning(Bet usersBet) {
+        scoreCounter.addBetScore(usersBet);
+        render.showTurnVictoryMessage();
+        guessedCardsCount++;
+    }
+
+    private void processLoss(Bet usersBet) {
+        scoreCounter.subtractBetScore(usersBet);
+        render.showTurnLoseMessage();
+    }
+
     private void showGameResult() {
-        if (scoreCounter.getScore() >= MAX_SCORE) {
+        if (isAchieveMaxScore()) {
             render.showGameVictoryMessage();
         } else {
             render.showGameLoseMessage();
         }
+    }
+
+    private boolean isAchieveMaxScore() {
+        return scoreCounter.getScore() >= MAX_SCORE;
     }
 }
