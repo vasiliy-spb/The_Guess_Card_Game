@@ -34,7 +34,6 @@ public abstract class AbstractConsoleRender implements Render {
     @Override
     public void render(Card card) {
         String representation = getRepresentation(card);
-        System.out.println("Выпала карта:");
         System.out.println(representation);
     }
 

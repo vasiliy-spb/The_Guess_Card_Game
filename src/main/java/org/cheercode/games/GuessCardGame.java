@@ -67,6 +67,7 @@ public abstract class GuessCardGame implements Game {
     private void nextTurn() {
         Bet selectedAnswer = askUserChoice();
         Card turnCard = getTurnCard();
+        System.out.println("Выпала карта: ");
         render.render(turnCard);
 
         processResult(selectedAnswer, turnCard);
