@@ -8,9 +8,10 @@ import org.cheercode.new_version.factories.BetFactory;
 import org.cheercode.renders.Render;
 
 public class Game {
-    private static final String TITLE = "Введите ставку: ";
+    private static final String TITLE = "Введите ставку:";
     private static final String ERROR = "Неправильный ввод.";
-    private static final String TURN_MESSAGE = "Выпала карта: ";
+    private static final String TURN_CARD_MESSAGE = "Выпала карта:";
+    private static final String POSSIBLE_BET_TEMPLATE = "Возможные ставки:\n";
     private static final String BET_WIN_MESSAGE = "ВЫ УГАДАЛИ!";
     private static final String BET_LOSE_MESSAGE = "Вы не угадали..";
     private static final String GAME_WIN_MESSAGE = "ВЫ ПОБЕДИЛИ!!!";
@@ -18,14 +19,16 @@ public class Game {
     private static final String DECK_STATISTIC_TEMPLATE = "Карт в колоде: %d\n";
     private static final String GUESSED_CARD_STATISTIC_TEMPLATE = "Угадано: %d\n";
     private static final String SCORE_STATISTIC_TEMPLATE = "Очки: %d/%d\n";
+    private final String possibleBetMessage;
     private final ScoreCounter scoreCounter;
     private final Deck deck;
     private final Render render;
-    private int guessedCardCount = 0;
     private final Dialog<String> dialog;
     private final BetFactory betFactory;
+    private int guessedCardCount = 0;
 
     public Game(ScoreCounter scoreCounter, Deck deck, Render render, BetFactory betFactory) {
+        this.possibleBetMessage = POSSIBLE_BET_TEMPLATE + KeyBetHandler.get(betFactory);
         this.scoreCounter = scoreCounter;
         this.deck = deck;
         this.render = render;
@@ -66,12 +69,12 @@ public class Game {
     }
 
     private void nextTurn() {
+        System.out.println(possibleBetMessage);
         String selectedKey = dialog.input();
         Bet bet = betFactory.get(selectedKey);
 
         Card turnCard = deck.take();
-
-        System.out.println(TURN_MESSAGE);
+        System.out.println(TURN_CARD_MESSAGE);
         render.render(turnCard);
 
         boolean isBetWin = BetResultAnalyzer.isWin(bet, turnCard);
