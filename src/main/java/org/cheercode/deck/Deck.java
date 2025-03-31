@@ -2,7 +2,9 @@ package org.cheercode.deck;
 
 import org.cheercode.cards.Card;
 
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.Stack;
 
 public class Deck {
@@ -33,5 +35,9 @@ public class Deck {
 
     public void shuffle() {
         Collections.shuffle(cards);
+    }
+
+    public List<Card> toList() {
+        return new ArrayList<>(cards);
     }
 }
