@@ -1,4 +1,4 @@
-package org.cheercode.new_version;
+package org.cheercode.new_version.draft;
 
 import org.cheercode.cards.Card;
 import org.cheercode.deck.Deck;
