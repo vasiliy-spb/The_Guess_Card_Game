@@ -1,4 +1,4 @@
-package org.cheercode.new_version;
+package org.cheercode.new_version.draft;
 
 import org.cheercode.dialogs.Dialog;
 import org.cheercode.new_version.bets.Bet;

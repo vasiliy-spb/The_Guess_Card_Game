@@ -1,4 +1,6 @@
-package org.cheercode.new_version;
+package org.cheercode.new_version.draft;
+
+import org.cheercode.new_version.ScoreCounter;
 
 public class TestMain {
 
