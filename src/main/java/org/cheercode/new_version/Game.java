@@ -10,6 +10,14 @@ import org.cheercode.renders.Render;
 public class Game {
     private static final String TITLE = "Введите ставку: ";
     private static final String ERROR = "Неправильный ввод.";
+    private static final String TURN_MESSAGE = "Выпала карта: ";
+    private static final String BET_WIN_MESSAGE = "ВЫ УГАДАЛИ!";
+    private static final String BET_LOSE_MESSAGE = "Вы не угадали..";
+    private static final String GAME_WIN_MESSAGE = "ВЫ ПОБЕДИЛИ!!!";
+    private static final String GAME_LOSE_MESSAGE = "Вы проиграли..";
+    private static final String DECK_STATISTIC_TEMPLATE = "Карт в колоде: %d\n";
+    private static final String GUESSED_CARD_STATISTIC_TEMPLATE = "Угадано: %d\n";
+    private static final String SCORE_STATISTIC_TEMPLATE = "Очки: %d/%d\n";
     private final ScoreCounter scoreCounter;
     private final Deck deck;
     private final Render render;
@@ -40,9 +48,9 @@ public class Game {
     }
 
     private void showStatistic() {
-        System.out.println("Карт в колоде: " + deck.size());
-        System.out.println("Угадано: " + guessedCardCount);
-        System.out.printf("Очки: %d/%d\n", scoreCounter.getScore(), scoreCounter.getMaxValue());
+        System.out.printf(DECK_STATISTIC_TEMPLATE, deck.size());
+        System.out.printf(GUESSED_CARD_STATISTIC_TEMPLATE, guessedCardCount);
+        System.out.printf(SCORE_STATISTIC_TEMPLATE, scoreCounter.getScore(), scoreCounter.getMaxValue());
     }
 
     private boolean isGameOver() {
@@ -63,7 +71,7 @@ public class Game {
 
         Card turnCard = deck.take();
 
-        System.out.println("Выпала карта: ");
+        System.out.println(TURN_MESSAGE);
         render.render(turnCard);
 
         boolean isBetWin = BetResultAnalyzer.isWin(bet, turnCard);
@@ -79,21 +87,20 @@ public class Game {
     }
 
     private void showBetLoseMessage() {
-        System.out.println("Вы не угадали..");
+        System.out.println(BET_LOSE_MESSAGE);
     }
 
     private void showBetWinMessage() {
-        System.out.println("ВЫ УГАДАЛИ!");
+        System.out.println(BET_WIN_MESSAGE);
     }
 
     private void showGameWinMessage() {
         showStatistic();
-        System.out.println("ВЫ ПОБЕДИЛИ!!!");
+        System.out.println(GAME_WIN_MESSAGE);
     }
 
     private void showGameLoseMessage() {
         showStatistic();
-        System.out.println("Вы проиграли..");
+        System.out.println(GAME_LOSE_MESSAGE);
     }
-
 }
