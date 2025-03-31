@@ -7,8 +7,6 @@ import org.cheercode.before_review_version.menu.RenderVariants;
 import org.cheercode.factories.menu.GameVariantMenuFactory;
 import org.cheercode.factories.menu.MenuFactory;
 import org.cheercode.factories.menu.RenderVariantMenuFactory;
-import org.cheercode.games.*;
-import org.cheercode.menu.*;
 import org.cheercode.renders.ColoredConsoleRender;
 import org.cheercode.renders.MonochromeConsoleRender;
 import org.cheercode.renders.Render;
