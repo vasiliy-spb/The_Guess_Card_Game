@@ -22,7 +22,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>org.cheercode.Main</mainClass>
+                            <mainClass>org.cheercode.before_review_version.Main</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

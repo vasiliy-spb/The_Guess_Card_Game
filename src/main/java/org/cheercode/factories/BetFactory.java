@@ -1,12 +1,12 @@
 package org.cheercode.factories;
 
-import org.cheercode.bets.Bet;
-import org.cheercode.bets.BetType;
+import org.cheercode.before_review_version.bets.Bet;
+import org.cheercode.before_review_version.bets.BetType;
 import org.cheercode.cards.CardColors;
 import org.cheercode.cards.CardRanks;
 import org.cheercode.cards.CardSuits;
 
-import static org.cheercode.games.AttributeKeys.*;
+import static org.cheercode.before_review_version.games.AttributeKeys.*;
 
 public final class BetFactory {
     private BetFactory() {

@@ -1,10 +1,10 @@
 package org.cheercode.factories.menu;
 
-import org.cheercode.menu.GameMenu;
-import org.cheercode.menu.RenderVariantMenu;
-import org.cheercode.menu.RenderVariants;
-import org.cheercode.menu.items.MenuItem;
-import org.cheercode.menu.items.RenderVariantMenuItem;
+import org.cheercode.before_review_version.menu.GameMenu;
+import org.cheercode.before_review_version.menu.RenderVariantMenu;
+import org.cheercode.before_review_version.menu.RenderVariants;
+import org.cheercode.before_review_version.menu.items.MenuItem;
+import org.cheercode.before_review_version.menu.items.RenderVariantMenuItem;
 
 import java.util.List;
 
