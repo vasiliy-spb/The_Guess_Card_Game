@@ -1,4 +1,4 @@
-package org.cheercode.new_version.factories;
+package org.cheercode.new_version.bet_factories;
 
 public abstract class AbstractBetFactory implements BetFactory {
     public boolean isValid(String key) {

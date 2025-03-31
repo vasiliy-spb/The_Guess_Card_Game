@@ -4,7 +4,7 @@ import org.cheercode.cards.Card;
 import org.cheercode.deck.Deck;
 import org.cheercode.dialogs.Dialog;
 import org.cheercode.new_version.bets.Bet;
-import org.cheercode.new_version.factories.BetFactory;
+import org.cheercode.new_version.bet_factories.BetFactory;
 import org.cheercode.renders.Render;
 
 public class Game {

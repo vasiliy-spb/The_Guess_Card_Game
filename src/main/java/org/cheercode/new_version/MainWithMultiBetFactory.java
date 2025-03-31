@@ -2,8 +2,8 @@ package org.cheercode.new_version;
 
 import org.cheercode.deck.Deck;
 import org.cheercode.factories.DeckFactory;
-import org.cheercode.new_version.factories.BetFactory;
-import org.cheercode.new_version.factories.MultiBetFactory;
+import org.cheercode.new_version.bet_factories.BetFactory;
+import org.cheercode.new_version.bet_factories.MultiBetFactory;
 import org.cheercode.renders.ColoredConsoleRender;
 import org.cheercode.renders.Render;
 

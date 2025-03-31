@@ -1,6 +1,6 @@
 package org.cheercode.new_version;
 
-import org.cheercode.new_version.factories.*;
+import org.cheercode.new_version.bet_factories.*;
 
 public final class KeyBetHandler {
     private static final String COLOR_BET_FACTORY_TEMPLATE = """

@@ -1,4 +1,4 @@
-package org.cheercode.new_version.factories;
+package org.cheercode.new_version.bet_factories;
 
 import org.cheercode.new_version.bets.Bet;
 import org.cheercode.new_version.bets.FaceBet;
